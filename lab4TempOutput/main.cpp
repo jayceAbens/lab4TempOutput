@@ -20,14 +20,27 @@ Thoroughly test the program using your own data sets. Make sure to vet the value
 
 using namespace std;
 
+void printHeading();
+void printChart();
+
 int main()
 {
-	string inputFileName = "C:/Users/Jayce Abens/OneDrive/Documents/C++2021/lab4TempOutput/lab4TempOutput/hourlyTemperatures.dat"; //input file location, temperature values are separated by line
+	printHeading(); // prints the heading of the chart, scale from -30 to 120
+	printChart();	// reads data from the input file, prints a bar for each temperature value, ends when the end of the file is reached
+	return 0;
+}
+
+void printHeading()
+{
+	const string heading = " Temp | -30  -15  0    15   30   45   60   75   90   105  120";
+	cout << heading << endl;
+}
+
+void printChart()
+{
+	const string inputFileName = "C:/Users/Jayce Abens/OneDrive/Documents/C++2021/lab4TempOutput/lab4TempOutput/hourlyTemperatures.dat"; //input file location, temperature values are separated by line
 	ifstream inFile;
 	inFile.open(inputFileName);		// opens in file stream
-
-	string heading = " Temp | -30  -15  0    15   30   45   60   75   90   105  120";
-	cout << heading << endl;
 
 	float temp;
 	string bar;
@@ -42,5 +55,4 @@ int main()
 	}
 
 	inFile.close(); // closes file stream
-	return 0;
 }
